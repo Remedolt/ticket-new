@@ -1,0 +1,15 @@
+Options -Indexes
+DirectoryIndex index.php
+
+RewriteEngine On
+
+RewriteRule \.(db|sqlite)$ - [F,L]
+RewriteRule ^(src|sql|data|frontend)(/|$) - [F,L]
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+RewriteCond spa/$1 -f
+RewriteRule ^(.*)$ spa/$1 [L]
+
+RewriteRule ^ index.php [QSA,L]
